@@ -1,7 +1,7 @@
 "use strict";
 
 $(document).ready(function() {
-    
+
 let entry = '';
 let result = '0';
 let history = '0';
@@ -106,6 +106,10 @@ function computeResult() {
     else {
         resultField.innerHTML = res;
         historyField.innerHTML = history + '=' + res;
+    }
+    if (res.length > 16 || (history+"="+res).length > 25) {
+        allClear();
+        resultField.innerHTML = 'Too many characters!';
     }
     history = '0';
     result = '0';
