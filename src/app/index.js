@@ -46,7 +46,6 @@ for (let i = 0; i < buttons.length; i++) {
 
             let sub = history.match(/([-+/*]\.)|([-+/*][-+/*])/);
             if (sub != null && entry) {
-                //console.log(sub.index);
                 history = history.slice(0, sub.index+1) + '0' + history.slice(sub.index+1);
                 sub = null;
             }
