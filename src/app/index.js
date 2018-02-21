@@ -1,5 +1,4 @@
 /* TODO:
-    - wyeliminować możliwość wpisania zera i cyfry po znaku, np. 0+06
     - funkcja clearEntry()
     - obliczanie wyniku
     - uaktualnienie historii po wyniku np. 1+1=2
