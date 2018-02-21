@@ -1,19 +1,14 @@
 /* TODO:
-    - funkcja clearEntry()
-    - obliczanie wyniku
-    - uaktualnienie historii po wyniku np. 1+1=2
-    - czyszczenie po wpisaniu czegoś gdy obliczony byl wynik
-            np. kolejna flaga (calculated)
-    - zaokrąglanie wyniku
-    - maksymalna liczba znaków na ekranie (if znaki > max clearAll?)
+    - nothing ;)
 */
-
 
 let entry = '';
 let result = '0';
 let history = '0';
 let decimal = false;
 let special = false;
+let resultField = document.getElementById('result');
+let historyField = document.getElementById('history');
 
 let buttons = document.getElementsByTagName('button');
 
@@ -53,29 +48,25 @@ for (let i = 0; i < buttons.length; i++) {
             ind = history.search(/[-+/*]0[1-9]/);
             if (ind > 0)
                 history = history.slice(0, ind+1) + entry + history.slice(ind+3);
-            document.getElementById('result').innerHTML = result;
-            document.getElementById('history').innerHTML = history;
+            resultField.innerHTML = result;
+            historyField.innerHTML = history;
         }
-        else if (entry === 'ac') {
+        else if (entry === 'ac')
             allClear();
-        }
-        else if (entry === 'ce') {
+        else if (entry === 'ce')
             clearEntry();
-        }
-        else if (entry === '=') {
-            // RÓWNOŚĆ
-        }
+        else if (entry === '=')
+            computeResult();
     });
 }
-
 function allClear() {
     entry = '0';
     history = '0';
     result = '0';
     decimal = false;
     special = false;
-    document.getElementById('result').innerHTML = '0';
-    document.getElementById('history').innerHTML = '0';
+    resultField.innerHTML = '0';
+    historyField.innerHTML = '0';
 }
 function clearEntry() {
     let id = history.lastIndexOf(result);
@@ -94,8 +85,18 @@ function clearEntry() {
     decimal = false;
     special = false;
     if (result === null)
-        document.getElementById('result').innerHTML = '0';
+        resultField.innerHTML = '0';
     else
-        document.getElementById('result').innerHTML = result;
-    document.getElementById('history').innerHTML = history;
+        resultField.innerHTML = result;
+    historyField.innerHTML = history;
+}
+
+function computeResult() {
+    let res = Math.round(eval(history)*10000)/10000;
+    resultField.innerHTML = res;
+    historyField.innerHTML = history + '=' + res;
+    history = '0';
+    result = '0';
+    decimal = false;
+    special = false;
 }
