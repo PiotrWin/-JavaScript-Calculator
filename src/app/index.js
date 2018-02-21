@@ -1,3 +1,7 @@
+"use strict";
+
+$(document).ready(function() {
+    
 let entry = '';
 let result = '0';
 let history = '0';
@@ -108,3 +112,5 @@ function computeResult() {
     decimal = false;
     special = false;
 }
+
+});
