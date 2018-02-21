@@ -1,7 +1,3 @@
-/* TODO:
-    - nothing ;)
-*/
-
 let entry = '';
 let result = '0';
 let history = '0';
