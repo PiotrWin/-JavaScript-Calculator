@@ -42,25 +42,17 @@ for (let i = 0; i < buttons.length; i++) {
                 special = true;
                 decimal = false;
             }
-
             let sub = history.match(/([-+/*]\.)|([-+/*][-+/*])/);
             if (sub != null && entry) {
                 history = history.slice(0, sub.index+1) + '0' + history.slice(sub.index+1);
                 sub = null;
             }
             let ind = history.search(/([+\-/*]00)/);
-            if (ind > 0 && history[ind] !== '0') {
-                history = history.split("");
-                history.splice(ind+1, 1);
-                history = history.join("");
-            }
-
+            if (ind > 0 && history[ind] !== '0')
+                history = history.slice(0, ind+2) + history.slice(ind+3);
             ind = history.search(/[-+/*]0[1-9]/);
-            if (ind > 0) {
-                console.log(ind);
+            if (ind > 0)
                 history = history.slice(0, ind+1) + entry + history.slice(ind+3);
-            }
-
             document.getElementById('result').innerHTML = result;
             document.getElementById('history').innerHTML = history;
         }
@@ -68,13 +60,11 @@ for (let i = 0; i < buttons.length; i++) {
             allClear();
         }
         else if (entry === 'ce') {
-            //clearEntry();
+            clearEntry();
         }
         else if (entry === '=') {
             // RÓWNOŚĆ
         }
-
-
     });
 }
 
@@ -88,5 +78,24 @@ function allClear() {
     document.getElementById('history').innerHTML = '0';
 }
 function clearEntry() {
-
+    let id = history.lastIndexOf(result);
+    if (id >= 0)
+        history = history.slice(0, id);
+    if ((!isNaN(parseFloat(result)) && !isNaN(parseInt(history[history.length-1]))) || isNaN(parseFloat(result))) {
+        let numbers = history.match(/(\d+\.?\d*)/g);
+        if (numbers != null) result = numbers[numbers.length-1];
+    }
+    else {
+        let op = history.match(/[-+/*]$/);
+        result = op;
+    }
+    if (history === '')
+        history = '0';
+    decimal = false;
+    special = false;
+    if (result === null)
+        document.getElementById('result').innerHTML = '0';
+    else
+        document.getElementById('result').innerHTML = result;
+    document.getElementById('history').innerHTML = history;
 }
