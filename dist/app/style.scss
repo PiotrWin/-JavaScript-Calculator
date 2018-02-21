@@ -1,8 +1,88 @@
+$shadows: rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+$background: #dbe8fc;
+$buttonPrimary: #87a5c1;
+$buttonDark: #1c3e5e;
+$details: #12283d;
 
 #calculator {
-    width: 50%;
-    margin-left: 25%;
+    width: 40%;
+    margin-top: 2%;
+    margin-left: 30%;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: $details;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    background-color: $background;
+    box-shadow: 2px 10px 20px 2px $shadows;
 }
-button {
+#title {
+    font-family: 'Oleo Script', sans-serif;
+    font-size: 3vw;
     margin-top: 10px;
+    color: $details;
+}
+#screen {
+    font-family: 'Orbitron';
+    font-weight: 400;
+    color: $details;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 0 1.5vw 0 1.5vw;
+    background-color: #b3c2db;
+    #result {
+        font-size: 2.5vw;
+    }
+    #history {
+        font-size: 1.5vw;
+    }
+}
+#buttons {
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 2% 0 4% 0;
+    height: 100%;
+    button {
+        margin-top: 10px;
+        margin-left: 0.25%;
+        margin-right: 0.25%;
+        width: 22%;
+        border-style: solid;
+        border-width: 2px;
+        border-color: $details;
+        box-shadow: 0px 0px 1px 2px $shadows;
+        border-radius: 10px;
+    }
+    .btn {
+        height: 5vw;
+        font-weight: 700;
+        font-size: 1.5vw;
+        color: $details;
+        background-color: $buttonPrimary;
+        &:hover {
+            background-color: #6190bf;
+        }
+        &:active {
+            transition-duration: 0.01s;
+            box-shadow: 0px 0px 10px 6px $shadows;
+        }
+    }
+    .btn-darker {
+        background-color: $buttonDark;
+        color: $background;
+        border-color: $background;
+        &:hover {
+            background-color: #12273a;
+        }
+    }
+    #zero-button {
+        width: 45.25%;
+        margin-left: 0.375%;
+        margin-right: -22.875%;
+    }
+    #dot-button {
+        margin-left: 0.125%;
+    }
 }

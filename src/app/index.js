@@ -48,8 +48,14 @@ for (let i = 0; i < buttons.length; i++) {
             ind = history.search(/[-+/*]0[1-9]/);
             if (ind > 0)
                 history = history.slice(0, ind+1) + entry + history.slice(ind+3);
+
             resultField.innerHTML = result;
             historyField.innerHTML = history;
+
+            if (result.length > 16 || history.length > 25) {
+                allClear();
+                resultField.innerHTML = 'Too many characters!';
+            }
         }
         else if (entry === 'ac')
             allClear();
@@ -93,8 +99,14 @@ function clearEntry() {
 
 function computeResult() {
     let res = Math.round(eval(history)*10000)/10000;
-    resultField.innerHTML = res;
-    historyField.innerHTML = history + '=' + res;
+    if (res == Infinity || isNaN(res)) {
+        resultField.innerHTML = 'ERROR';
+        historyField.innerHTML = 'Division by zero!';
+    }
+    else {
+        resultField.innerHTML = res;
+        historyField.innerHTML = history + '=' + res;
+    }
     history = '0';
     result = '0';
     decimal = false;
