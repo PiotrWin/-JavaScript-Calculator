@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Calculator</title>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet'>
+        <script src="jquery/jquery-3.3.1.min.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div id="calculator">
+                <div id="title" class="text-center">
+                    JavaScript Calculator
+                </div>
+                <div id="screen">
+                    <div id="result" class="text-right">0</div>
+                    <div id="history" class="text-right">0</div>
+                </div>
+                <div id="buttons">
+                    <button class="btn btn-darker" value="ac">AC</button>
+                    <button class="btn btn-darker" value="ce">CE</button>
+                    <button class="invisible"></button>
+                    <button class="btn" value="/">&divide;</button>
+
+                    <button class="btn" value="7">7</button>
+                    <button class="btn" value="8">8</button>
+                    <button class="btn" value="9">9</button>
+                    <button class="btn" value="*">x</button>
+
+                    <button class="btn" value="4">4</button>
+                    <button class="btn" value="5">5</button>
+                    <button class="btn" value="6">6</button>
+                    <button class="btn" value="-">-</button>
+
+                    <button class="btn" value="1">1</button>
+                    <button class="btn" value="2">2</button>
+                    <button class="btn" value="3">3</button>
+                    <button class="btn" value="+">+</button>
+
+                    <button class="btn" id="zero-button" value="0">0</button>
+                    <button class="invisible"></button>
+                    <button class="btn" id = "dot-button" value=".">.</button>
+                    <button class="btn btn-darker" value="=">=</button>
+                </div>
+            </div>
+        </div>
+        <script src="bundle.js"></script>
+    </body>
+</html>
